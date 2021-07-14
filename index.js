@@ -6,6 +6,7 @@ let content = document.getElementById("content");
 let info = document.getElementById("info");
 
 info.innerText = "Time complexity: O(nlogN); Space complexity: O(logN)"
+
 type.onchange =  (e) => {
   switch(e.target.value) {
     case("Merge Sort"):
@@ -23,14 +24,18 @@ type.onchange =  (e) => {
     case("Heap Sort"):
       info.innerText = "Time complexity: O(nlogN); Space complexity: O(0)"
       break
+    case("insertion Sort"):
+      info.innerText = "Time complexity: O(n^2); Space complexity: O(1)"
+      break
+
   }
 }
  function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 async function swap(arr, a, b) {
-  colors[a] = "#9400ff"
-  colors[b] = "#9400ff"
+  colors[a] = "#2165F1"
+  colors[b] = "#2165F1"
     await sleep(50);
     let temp = arr[a];
     arr[a] = arr[b];
@@ -46,8 +51,8 @@ async function insertionSort(inputArr) {
             let current = inputArr[i];
             let j = i-1; 
             while ((j > -1) && (current < inputArr[j])) {
-              colors[j] = "#9400ff"
-              colors[current] = "#9400ff"
+              colors[j] = "#2165F1"
+              colors[current] = "#2165F1"
               await sleep(10)
               await update(inputArr)
               inputArr[j+1] = inputArr[j];
@@ -116,8 +121,8 @@ async function mergeSort(array, start = 0, end = array.length - 1) {
 }
 
 async function merge(array, start, middle, end) {
-  colors[start] = "#9400ff"
-  colors[end] = "#9400ff"
+  colors[start] = "#2165F1"
+  colors[end] = "#2165F1"
   let leftArrayLength = middle - start + 1
   let rightArrayLength = end - middle
   let leftArray = []
@@ -199,28 +204,20 @@ const update = (arr, color = "black") => {
     content.innerHTML = ""
       arr.map((num, i) => {
           color = colors[i] ? colors[i] : "black"
-          content.innerHTML += `<div class="text-white" style="height: ${num * 7}px; width: 100px; border: 1px solid #9400ff; background: ${color}; margin-right: 10px;"></div>` 
+          content.innerHTML += `<div class="text-white" style="height: ${num * 7}px; width: 100px; border: 1px solid #2165F1; background: ${color}; margin-right: 10px;"></div>` 
       })
 }
 
 let a = generateArr(slider.value)
 
-if(a.length > 30) {
-  arr.innerHTML += "[" +  a.slice(0, 30).toString() + "... and "+ (a.length - 30).toString() +" more]"
-} else {
-  arr.innerHTML += "[" +  a.toString() + "]"
-}
+arr.innerHTML += `${a.length} values`
 
 slider.onchange = function() {
   content.innerHTML = ""
   arr.innerHTML = ""
   let a = generateArr(this.value)
   colors =  Array.from({ length: slider.value }).map((u, i) => 0)
-  if(a.length > 30) {
-    arr.innerHTML += "[" +  a.slice(0, 30).toString() + "... and "+ (a.length - 30).toString() +" more]"
-  } else {
-    arr.innerHTML += "[" +  a.toString() + "]"
-  }
+  arr.innerHTML += `${a.length} values`
 }
 
 start.innerText = "Start!"
@@ -235,33 +232,32 @@ start.addEventListener("click", async () => {
 
     content.innerHTML=""
       let b = generateArr(slider.value)
-      console.log(b)
       if(type.value === "Quick Sort") {
           let arr = await quickSort(b, 0, b.length - 1)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
   
       } else if(type.value === "Bubble Sort") {
           let arr = await bubbleSort(b)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
   
       } else if(type.value === "Selection Sort") {
           let arr = await selectionSort(b)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
   
       } else if(type.value === "Merge Sort") {
           let arr = await mergeSort(b)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
       } else if(type.value === "Heap Sort") {
           let arr = await heapSort(b)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
       } else if(type.value === "Insertion Sort") {
           let arr = await insertionSort(b)
-          colors =  Array.from({ length: slider.value }).map((u, i) => 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)')
+          colors =  Array.from({ length: slider.value }).map((u, i) => '#2165F1')
           update(arr)
       } else {
       start.innerText = "Start!"

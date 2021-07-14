@@ -8,28 +8,29 @@
     <title>Sort</title>
 </head>
 <body>
-    <div id="app"></div>
     <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <div class="text-white" id="array"></div>
-
-      <div class="flex margin-y">
-        <select id="title" name="title">
-
-            <option value="Quick Sort">Quick Sort</option>
-            <option value="Bubble Sort">Bubble Sort</option>
-            <option value="Selection Sort">Selection Sort</option>
-            <option value="Merge Sort">Merge Sort</option>
-            <option value="Heap Sort">Heap Sort</option>
-            <option value="Insertion Sort">Insertion Sort</option>
-           </select>
-      </div>
-      <div id="info"></div>
-      <div class="flex">
-          <button class="glow-on-hover" type="button" id="start"></button>
-      </div>
-
+        <div class="sliderdiv">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            <div class="text-white" id="array"></div>
+        </div>
+        <div class="flex margin-y">
+          <select id="title" name="title">
+  
+              <option value="Quick Sort">Quick Sort</option>
+              <option value="Bubble Sort">Bubble Sort</option>
+              <option value="Selection Sort">Selection Sort</option>
+              <option value="Merge Sort">Merge Sort</option>
+              <option value="Heap Sort">Heap Sort</option>
+              <option value="Insertion Sort">Insertion Sort</option>
+             </select>
+        </div>
+        <div class="flex">
+            <button class="glow-on-hover" type="button" id="start"></button>
+        </div>
+    </div>
+    
+    
+    <div id="info"></div>
       <div id="content"></div>
     <script type="module" src="index.js"></script>
 </body>
